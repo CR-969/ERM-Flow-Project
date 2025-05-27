@@ -127,7 +127,7 @@ export default function Home() {
     <Layout>
       {/* Hero Section with Enhanced Graphics */}
       <section className="relative overflow-hidden py-20 sm:py-32 min-h-screen flex items-center">
-        <AnimatedBackground variant="waves" />
+        <AnimatedBackground variant="flowing" />
         <FloatingGraphics variant="hero" />
 
         {/* Animated mesh gradient background */}
@@ -237,13 +237,13 @@ export default function Home() {
 
       {/* KPI Counters with Enhanced Background */}
       <div className="relative">
-        <AnimatedBackground variant="grid" />
+        <AnimatedBackground variant="neural" />
         <KPICounters />
       </div>
 
       {/* Services Overview with Enhanced Graphics */}
       <section className="relative py-16 overflow-hidden">
-        <AnimatedBackground variant="dots" />
+        <AnimatedBackground variant="flowing" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -449,21 +449,21 @@ export default function Home() {
       </section>
 
       {/* Enhanced CTA Section */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary" />
-        <AnimatedBackground variant="dots" />
+      <section className="relative py-16 overflow-hidden bg-primary">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-secondary opacity-90" />
+        <AnimatedBackground variant="particles" />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-4 text-white">
+            <h2 className="text-3xl font-bold mb-4 text-white drop-shadow-lg">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-white/90 mb-8 text-lg">
+            <p className="text-white/95 mb-8 text-lg drop-shadow-md">
               Join thousands of businesses that have revolutionized their
               operations with ERPFlow. Start your free trial today and see the
               difference.
@@ -473,14 +473,14 @@ export default function Home() {
                 asChild
                 size="lg"
                 variant="secondary"
-                className="text-lg px-8 bg-white text-primary hover:bg-white/90"
+                className="text-lg px-8 bg-white text-primary hover:bg-white/90 shadow-lg"
               >
                 <Link to="/contact">Start Free Trial</Link>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 border-white text-white hover:bg-white/10"
+                className="text-lg px-8 border-white text-white hover:bg-white/20 hover:text-white shadow-lg"
                 asChild
               >
                 <Link to="/demo">Schedule Demo</Link>
