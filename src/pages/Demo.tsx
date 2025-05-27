@@ -91,11 +91,16 @@ export default function Demo() {
       </section>
 
       {/* Data Simulation Section */}
-      <DataSimulation />
+      <div className="relative">
+        <AnimatedBackground variant="grid" />
+        <DataSimulation />
+      </div>
 
       {/* Interactive Features */}
-      <section className="py-16 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/50 via-background to-muted/30" />
+        <AnimatedBackground variant="particles" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -215,8 +220,9 @@ export default function Demo() {
       </section>
 
       {/* Results Preview */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <AnimatedBackground variant="dots" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -283,18 +289,20 @@ export default function Demo() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary" />
+        <AnimatedBackground variant="waves" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-white">
               Ready to See These Results in Your Business?
             </h2>
-            <p className="text-primary-foreground/90 mb-8 text-lg">
+            <p className="text-white/90 mb-8 text-lg">
               The demo is just the beginning. Let's discuss how ERPFlow can be
               customized for your specific business needs and challenges.
             </p>

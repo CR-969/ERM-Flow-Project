@@ -16,6 +16,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/Layout";
 import { FileUpload } from "@/components/FileUpload";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { FloatingGraphics } from "@/components/FloatingGraphics";
 import {
   MapPin,
   Phone,
@@ -132,8 +134,9 @@ export default function Contact() {
   if (isSubmitted) {
     return (
       <Layout>
-        <section className="py-20 min-h-[60vh] flex items-center">
-          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="py-20 min-h-[60vh] flex items-center relative overflow-hidden">
+          <AnimatedBackground variant="waves" />
+          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -188,11 +191,15 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className="text-center"
+                className="text-center group"
               >
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <reason.icon className="h-8 w-8 text-primary" />
-                </div>
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:from-primary/30 group-hover:to-primary/20 transition-all"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <reason.icon className="h-10 w-10 text-primary" />
+                </motion.div>
                 <h3 className="font-semibold mb-2">{reason.title}</h3>
                 <p className="text-sm text-muted-foreground">
                   {reason.description}
@@ -204,8 +211,9 @@ export default function Contact() {
       </section>
 
       {/* Contact Form and Info */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <AnimatedBackground variant="grid" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
@@ -215,7 +223,7 @@ export default function Contact() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <Card>
+                <Card className="hover:shadow-xl transition-shadow">
                   <CardHeader>
                     <CardTitle className="text-2xl">
                       Send us a Message
@@ -414,7 +422,7 @@ export default function Contact() {
                 viewport={{ once: true }}
                 className="space-y-6"
               >
-                <Card>
+                <Card className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <CardTitle>Contact Information</CardTitle>
                     <CardDescription>
@@ -446,7 +454,7 @@ export default function Contact() {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <CardTitle>Quick Response Guarantee</CardTitle>
                   </CardHeader>
@@ -480,8 +488,10 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-muted/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/50 via-background to-muted/30" />
+        <AnimatedBackground variant="particles" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -527,7 +537,7 @@ export default function Contact() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card>
+                <Card className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <CardTitle className="text-lg">{faq.question}</CardTitle>
                   </CardHeader>

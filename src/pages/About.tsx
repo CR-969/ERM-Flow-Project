@@ -11,6 +11,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Layout } from "@/components/Layout";
 import { KPICounters } from "@/components/KPICounters";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { FloatingGraphics } from "@/components/FloatingGraphics";
 import {
   Users,
   Target,
@@ -162,8 +164,9 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <AnimatedBackground variant="dots" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -248,8 +251,10 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-16 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/50 via-background to-muted/30" />
+        <AnimatedBackground variant="grid" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -272,12 +277,17 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="text-center h-full hover:shadow-lg transition-shadow">
+                <Card className="text-center h-full hover:shadow-xl transition-all duration-500 group-hover:scale-105">
                   <CardHeader>
-                    <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <value.icon className="h-8 w-8 text-primary" />
-                    </div>
+                    <motion.div
+                      className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                      whileHover={{ scale: 1.1, rotate: 10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <value.icon className="h-10 w-10 text-primary" />
+                    </motion.div>
                     <CardTitle className="text-xl">{value.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -291,8 +301,9 @@ export default function About() {
       </section>
 
       {/* Timeline */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <AnimatedBackground variant="waves" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -326,7 +337,7 @@ export default function About() {
                   <div
                     className={`w-5/12 ${index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"}`}
                   >
-                    <Card>
+                    <Card className="hover:shadow-lg transition-shadow">
                       <CardHeader>
                         <div className="flex items-center justify-between">
                           <Badge variant="secondary">{milestone.year}</Badge>
@@ -354,8 +365,10 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="py-16 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/50 via-background to-muted/30" />
+        <AnimatedBackground variant="particles" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -408,26 +421,36 @@ export default function About() {
       </section>
 
       {/* KPI Section */}
-      <KPICounters />
+      <div className="relative">
+        <AnimatedBackground variant="grid" />
+        <KPICounters />
+      </div>
 
       {/* CTA Section */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary" />
+        <AnimatedBackground variant="dots" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-white">
               Ready to Join Our Success Story?
             </h2>
-            <p className="text-muted-foreground mb-8 text-lg">
+            <p className="text-white/90 mb-8 text-lg">
               Become part of the ERPFlow community and transform your business
               with our proven solutions and dedicated support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="text-lg px-8">
+              <Button
+                asChild
+                size="lg"
+                variant="secondary"
+                className="text-lg px-8"
+              >
                 <Link to="/contact">
                   Start Your Journey
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -436,7 +459,7 @@ export default function About() {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8"
+                className="text-lg px-8 border-white/80 text-white hover:bg-white hover:text-primary"
                 asChild
               >
                 <Link to="/services">Explore Solutions</Link>

@@ -11,6 +11,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Layout } from "@/components/Layout";
 import { WorkflowDiagram } from "@/components/WorkflowDiagram";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { FloatingGraphics } from "@/components/FloatingGraphics";
 import {
   BarChart3,
   Users,
@@ -174,8 +176,9 @@ export default function Services() {
       </section>
 
       {/* Sales Management Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <AnimatedBackground variant="dots" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -204,12 +207,17 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full hover:shadow-lg transition-shadow">
+                <Card className="h-full hover:shadow-xl transition-all duration-500 group-hover:scale-105">
                   <CardHeader>
-                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
-                      <feature.icon className="h-6 w-6 text-blue-500" />
-                    </div>
+                    <motion.div
+                      className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4 shadow-lg"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <feature.icon className="h-8 w-8 text-white" />
+                    </motion.div>
                     <CardTitle className="text-xl">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -264,8 +272,10 @@ export default function Services() {
       </section>
 
       {/* Digital Marketing Section */}
-      <section className="py-16 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/50 via-background to-muted/30" />
+        <AnimatedBackground variant="particles" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -294,16 +304,22 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-4">
-                      <feature.icon className="h-6 w-6 text-green-500" />
-                    </div>
+                <Card className="h-full hover:shadow-xl transition-all duration-500 group-hover:scale-105 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-green-600/5 group-hover:from-green-400/10 group-hover:to-green-600/10 transition-all" />
+                  <CardHeader className="relative">
+                    <motion.div
+                      className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-4 shadow-lg"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <feature.icon className="h-8 w-8 text-white" />
+                    </motion.div>
                     <CardTitle className="text-xl">{feature.title}</CardTitle>
                     <CardDescription>{feature.description}</CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="relative">
                     <ul className="space-y-2">
                       {feature.details.map((detail) => (
                         <li key={detail} className="flex items-center text-sm">
@@ -321,11 +337,15 @@ export default function Services() {
       </section>
 
       {/* Workflow Section */}
-      <WorkflowDiagram />
+      <div className="relative">
+        <AnimatedBackground variant="waves" />
+        <WorkflowDiagram />
+      </div>
 
       {/* Integration Benefits */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 overflow-hidden">
+        <AnimatedBackground variant="grid" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -349,7 +369,7 @@ export default function Services() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full">
+              <Card className="h-full hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl">
                     Unified Data & Insights
@@ -385,7 +405,7 @@ export default function Services() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full">
+              <Card className="h-full hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl">Seamless Automation</CardTitle>
                 </CardHeader>
@@ -432,18 +452,20 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary" />
+        <AnimatedBackground variant="dots" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-white">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-primary-foreground/90 mb-8 text-lg">
+            <p className="text-white/90 mb-8 text-lg">
               Join thousands of businesses that have revolutionized their sales
               and marketing with ERPFlow. Start your journey today.
             </p>
@@ -459,7 +481,7 @@ export default function Services() {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 border-primary-foreground/80 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                className="text-lg px-8 border-white/80 text-white hover:bg-white hover:text-primary"
                 asChild
               >
                 <Link to="/about">Learn More</Link>
