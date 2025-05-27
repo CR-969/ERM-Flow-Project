@@ -363,9 +363,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group"
+                className="group w-full"
               >
-                <Card className="text-center h-full hover:shadow-xl transition-all duration-500 group-hover:scale-105 overflow-hidden relative">
+                <Card className="text-center h-full hover:shadow-xl transition-all duration-500 group-hover:scale-105 overflow-hidden relative bg-background/95 backdrop-blur-sm border-border/50">
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-5 group-hover:opacity-10 transition-opacity`}
                   />
@@ -377,7 +377,9 @@ export default function Home() {
                     >
                       <feature.icon className="h-10 w-10 text-white" />
                     </motion.div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl text-foreground">
+                      {feature.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="relative">
                     <p className="text-muted-foreground">
@@ -449,21 +451,19 @@ export default function Home() {
       </section>
 
       {/* Enhanced CTA Section */}
-      <section className="relative py-16 overflow-hidden bg-primary">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-secondary opacity-90" />
-        <AnimatedBackground variant="particles" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20">
+      <section className="py-16 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-t border-slate-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700"
           >
-            <h2 className="text-3xl font-bold mb-4 text-white drop-shadow-lg">
+            <h2 className="text-3xl font-bold mb-4 text-white">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-white/95 mb-8 text-lg drop-shadow-md">
+            <p className="text-slate-200 mb-8 text-lg">
               Join thousands of businesses that have revolutionized their
               operations with ERPFlow. Start your free trial today and see the
               difference.
@@ -472,15 +472,14 @@ export default function Home() {
               <Button
                 asChild
                 size="lg"
-                variant="secondary"
-                className="text-lg px-8 bg-white text-primary hover:bg-white/90 shadow-lg"
+                className="text-lg px-8 bg-primary hover:bg-primary/90 text-white shadow-lg"
               >
                 <Link to="/contact">Start Free Trial</Link>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 border-white text-white hover:bg-white/20 hover:text-white shadow-lg"
+                className="text-lg px-8 border-slate-300 text-slate-200 hover:bg-slate-700 hover:text-white"
                 asChild
               >
                 <Link to="/demo">Schedule Demo</Link>

@@ -99,7 +99,7 @@ export default function Demo() {
       {/* Interactive Features */}
       <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-muted/50 via-background to-muted/30" />
-        <AnimatedBackground variant="particles" />
+        <AnimatedBackground variant="geometric" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -289,20 +289,19 @@ export default function Demo() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 overflow-hidden bg-primary">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-secondary opacity-90" />
-        <AnimatedBackground variant="waves" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20">
+      <section className="py-16 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-t border-slate-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700"
           >
-            <h2 className="text-3xl font-bold mb-4 text-white drop-shadow-lg">
+            <h2 className="text-3xl font-bold mb-4 text-white">
               Ready to See These Results in Your Business?
             </h2>
-            <p className="text-white/95 mb-8 text-lg drop-shadow-md">
+            <p className="text-slate-200 mb-8 text-lg">
               The demo is just the beginning. Let's discuss how ERPFlow can be
               customized for your specific business needs and challenges.
             </p>
@@ -310,8 +309,7 @@ export default function Demo() {
               <Button
                 asChild
                 size="lg"
-                variant="secondary"
-                className="text-lg px-8 bg-white text-primary hover:bg-white/90 shadow-lg"
+                className="text-lg px-8 bg-primary hover:bg-primary/90 text-white shadow-lg"
               >
                 <Link to="/contact">
                   Schedule Personal Demo
@@ -321,7 +319,7 @@ export default function Demo() {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 border-white text-white hover:bg-white/20 hover:text-white shadow-lg"
+                className="text-lg px-8 border-slate-300 text-slate-200 hover:bg-slate-700 hover:text-white"
                 asChild
               >
                 <Link to="/services">Explore Services</Link>
