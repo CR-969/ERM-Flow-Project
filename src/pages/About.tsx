@@ -57,27 +57,31 @@ const teamMembers = [
     role: "CEO & Founder",
     description:
       "Former McKinsey consultant with 15+ years in enterprise software",
-    image: "👩‍💼",
+    image:
+      "https://images.unsplash.com/photo-1494790108755-2616b612c9c3?w=400&h=400&fit=crop&crop=face",
   },
   {
     name: "Michael Chen",
     role: "CTO",
     description:
       "Ex-Google engineer specializing in scalable cloud architectures",
-    image: "👨‍💻",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
   },
   {
     name: "Emily Rodriguez",
     role: "VP of Sales",
     description:
       "Sales leader with proven track record at Salesforce and HubSpot",
-    image: "👩‍💼",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
   },
   {
     name: "David Kim",
     role: "Head of Marketing",
     description: "Digital marketing expert who scaled multiple SaaS companies",
-    image: "👨‍💼",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
   },
 ];
 
@@ -118,8 +122,11 @@ export default function About() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 overflow-hidden">
+        <AnimatedBackground variant="particles" />
+        <FloatingGraphics variant="features" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/5" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -374,9 +381,15 @@ export default function About() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="text-center h-full hover:shadow-lg transition-shadow">
+                <Card className="text-center h-full hover:shadow-lg transition-shadow group">
                   <CardHeader>
-                    <div className="text-6xl mb-4">{member.image}</div>
+                    <div className="w-24 h-24 mx-auto mb-4 overflow-hidden rounded-full border-4 border-primary/20 group-hover:border-primary/40 transition-colors">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
                     <CardTitle className="text-xl">{member.name}</CardTitle>
                     <CardDescription className="font-medium text-primary">
                       {member.role}

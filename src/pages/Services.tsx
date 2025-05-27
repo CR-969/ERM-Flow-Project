@@ -144,8 +144,11 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 overflow-hidden">
+        <AnimatedBackground variant="grid" />
+        <FloatingGraphics variant="services" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/5" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -456,7 +459,7 @@ export default function Services() {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                className="text-lg px-8 border-primary-foreground/80 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                 asChild
               >
                 <Link to="/about">Learn More</Link>
