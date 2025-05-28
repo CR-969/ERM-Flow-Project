@@ -427,19 +427,19 @@ export default function About() {
       </div>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-t border-slate-700">
+      <section className="py-16 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 border-t border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700"
+            className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border shadow-xl"
           >
-            <h2 className="text-3xl font-bold mb-4 text-white">
+            <h2 className="text-3xl font-bold mb-4 text-card-foreground">
               Ready to Join Our Success Story?
             </h2>
-            <p className="text-slate-200 mb-8 text-lg">
+            <p className="text-muted-foreground mb-8 text-lg">
               Become part of the ERPFlow community and transform your business
               with our proven solutions and dedicated support.
             </p>
@@ -447,7 +447,7 @@ export default function About() {
               <Button
                 asChild
                 size="lg"
-                className="text-lg px-8 bg-primary hover:bg-primary/90 text-white shadow-lg font-semibold"
+                className="text-lg px-8 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg font-semibold"
               >
                 <Link to="/contact">
                   Start Your Journey
@@ -457,7 +457,7 @@ export default function About() {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 border-slate-300 text-slate-200 hover:bg-slate-700 hover:text-white font-semibold"
+                className="text-lg px-8 font-semibold"
                 asChild
               >
                 <Link to="/services">Explore Solutions</Link>
