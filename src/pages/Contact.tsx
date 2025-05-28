@@ -165,7 +165,7 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <AnimatedBackground variant="dots" />
-        <FloatingGraphics variant="services" />
+
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
