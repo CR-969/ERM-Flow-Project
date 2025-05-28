@@ -1,3 +1,4 @@
+java
 package com.example.emailservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -5,7 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = {
+    "http://localhost:3000",                  // Local frontend
+    "https://subtle-cajeta-de7582.netlify.app"   // Production frontend (CHANGE THIS!)
+})
+@RequestMapping("/api/email") // 👈 Add base path
 public class EmailController {
 
     @Autowired
