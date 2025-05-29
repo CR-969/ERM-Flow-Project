@@ -20,19 +20,22 @@ public class EmailService {
                                 String messageBody, MultipartFile attachment) throws Exception {
 
         MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, attachment != null && !attachment.isEmpty());
 
-        helper.setFrom(email);
-        helper.setTo("riselynx@gmail.com");
+        boolean multipart = (attachment != null && !attachment.isEmpty());
+        MimeMessageHelper helper = new MimeMessageHelper(message, multipart);
+
+        helper.setFrom(email);  // sender as the user's email
+        helper.setTo("riselynx@gmail.com"); // receiver email (your inbox)
         helper.setSubject(subject);
 
         String content = String.format(
-            "Name: %s %s\nEmail: %s\nCompany: %s\nPhone: %s\nBusiness Type: %s\n\nMessage:\n%s",
-            firstName, lastName, email, company, phone, businessType, messageBody
+                "Name: %s %s\nEmail: %s\nCompany: %s\nPhone: %s\nBusiness Type: %s\n\nMessage:\n%s",
+                firstName, lastName, email, company, phone == null ? "N/A" : phone, businessType, messageBody
         );
+
         helper.setText(content);
 
-        if (attachment != null && !attachment.isEmpty()) {
+        if (multipart) {
             InputStreamSource source = new ByteArrayResource(attachment.getBytes());
             helper.addAttachment(attachment.getOriginalFilename(), source);
         }
