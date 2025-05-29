@@ -115,21 +115,48 @@ export default function Contact() {
   });
 
   const onSubmit = async (data: ContactForm) => {
-    setIsSubmitting(true);
+  setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+  try {
+    const API_BASE_URL = "https://erm-flow-project-production.up.railway.app";
+
+
+    const formData = new FormData();
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email);
+    formData.append("company", data.company);
+    formData.append("phone", data.phone || "");
+    formData.append("subject", data.subject);
+    formData.append("message", data.message);
+    formData.append("businessType", data.businessType);
+
+    attachedFiles.forEach((file, index) => {
+      formData.append("files", file);
+    });
+
+    const response = await fetch(`${API_BASE_URL}/send`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message");
+    }
 
     console.log("Form submitted:", { ...data, files: attachedFiles });
 
-    setIsSubmitting(false);
     setIsSubmitted(true);
     reset();
     setAttachedFiles([]);
-
-    // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
-  };
+  } catch (error) {
+    console.error("Submission error:", error);
+    alert("Something went wrong. Please try again later.");
+  }
+
+  setIsSubmitting(false);
+};
 
   if (isSubmitted) {
     return (
